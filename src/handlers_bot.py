@@ -1,9 +1,10 @@
 """
-    Обработчики сообщений телеграм бота.
+Обработчики сообщений телеграм бота.
 """
 
 import os
-from aiogram import types, Bot, Dispatcher
+
+from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 
 from src import utils
@@ -43,9 +44,7 @@ async def handle_question(message: types.Message):
     context = utils.format_context_for_ai(data=parsed_data)
     try:
         raw_answer = await ai_ask_answer(
-            ask_user=question,
-            context=context,
-            system_content=utils.system_content
+            ask_user=question, context=context, system_content=utils.system_content
         )
     except Exception as err:
         await message.answer(f"Ошибка ИИ: {err}")
@@ -66,7 +65,7 @@ async def on_startup():
         with open(f"parsed_files/page_{i+1}.txt", "w", encoding="UTF-8") as f:
             f.write(f"URL: {item['url']}\n\n")
             f.write(f"Заголовок: {item['title']}\n\n")
-            f.write(item['text'])
+            f.write(item["text"])
     print(f"Спарсено {len(parsed_data)} страниц.")
 
 

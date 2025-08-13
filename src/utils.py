@@ -1,8 +1,9 @@
 """
-    Утилиты. Вспомогательный функционал приложения.
+Утилиты. Вспомогательный функционал приложения.
 """
 
 import re
+
 from aiogram.utils.markdown import hlink
 
 
@@ -19,21 +20,22 @@ def make_html_links(answer: str, parsed_data: list) -> str:
         # Получает номер из [1], [2] и т.д.
         num = int(match.group(1))
         if 1 <= num <= len(parsed_data):
-            url = parsed_data[num - 1]['url']
+            url = parsed_data[num - 1]["url"]
             # Возвращает HTML-ссылку: <a href="url">[1]</a>
             return hlink(f"[{num}]", url)
         else:
             # Если номер вне диапазона, оставляет как есть
             return match.group(0)
+
     # Ищет все метки и заменяет их на гиперссылки.
-    result = re.sub(r'\[(\d+)\]', replace_match, answer)
+    result = re.sub(r"\[(\d+)\]", replace_match, answer)
     return result
 
 
 def clean_json_block_in_context(text: str) -> str:
     """Удаляет JSON-блоки из текста."""
     pattern = r"\[\{.*?.*?}]"
-    cleaned_text = re.sub(pattern, '', text, flags=re.DOTALL)
+    cleaned_text = re.sub(pattern, "", text, flags=re.DOTALL)
     return cleaned_text
 
 
@@ -103,5 +105,5 @@ urls = [
     "https://eora.ru/cases/chat-boty/purina-friskies-chat-bot-na-sajte",
     "https://eora.ru/cases/nejroset-segmentaciya-video",
     "https://eora.ru/cases/chat-boty/essa-nejroset-dlya-generacii-rolikov",
-    "https://eora.ru/cases/qiwi-poisk-anomalij"
+    "https://eora.ru/cases/qiwi-poisk-anomalij",
 ]

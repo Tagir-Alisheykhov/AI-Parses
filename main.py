@@ -1,12 +1,11 @@
 """
-    Точка входа, для запуска приложения.
+Точка входа, для запуска приложения.
 """
-
-from src.handlers_bot import main
 
 import asyncio
 from datetime import datetime
 
+from src.handlers_bot import main
 
 if __name__ == "__main__":
     try:

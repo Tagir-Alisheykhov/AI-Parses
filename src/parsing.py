@@ -1,4 +1,5 @@
 import asyncio
+
 import aiohttp
 from bs4 import BeautifulSoup
 
@@ -7,12 +8,14 @@ async def parse_page(session: aiohttp.ClientSession, url: str) -> dict | None:
     """Асинхронная функция для парсинга одной страницы"""
     try:
         async with session.get(url) as response:
-            text = await response.text(encoding='utf-8')
+            text = await response.text(encoding="utf-8")
             soup = BeautifulSoup(text, "html.parser")
             return {
                 "url": url,
-                "title": soup.find("title").text if soup.find("title") else "Без заголовка",
-                "text": soup.get_text()[:2000]
+                "title": (
+                    soup.find("title").text if soup.find("title") else "Без заголовка"
+                ),
+                "text": soup.get_text()[:2000],
             }
     except Exception as err:
         print(f"Ошибка при парсинге {url}: {err}")

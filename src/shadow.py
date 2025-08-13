@@ -1,8 +1,9 @@
 """
-    Файл-конфигурации переменных окружения.
+Файл-конфигурации переменных окружения.
 """
 
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
