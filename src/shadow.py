@@ -11,6 +11,6 @@ load_dotenv()
 class ShadowKeys:
     """Конфигурация чувствительных данных"""
 
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-    DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
-    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+    OPEN_ROUTER_AI_URL = os.getenv("OPEN_ROUTER_AI_URL")
+    API_KEY = os.getenv("API_KEY")
+    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
